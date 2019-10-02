@@ -1,0 +1,110 @@
+﻿<div class="welcome-dashboard form-horizontal" ng-controller="uGraph.controller as vm">
+
+    <form name="docType" val-form-manager>
+
+        <div class="umb-dashboard" data-element="dashboard">
+
+            <div class="umb-dashboard__header" ng-show="vm.tabs.length > 0">
+                <div style="height: 50px; padding: 0 10px;">
+                    <div style="float: left; font-weight: 600; font-size: 1.4em;">
+                        <span style="color: #c0c0c0; font-weight: 400;">Document Type:&nbsp;</span>{{vm.docType.name}}
+                    </div>
+                    <div style="float:right">
+                        <umb-toggle checked="vm.docType.enabled" on-click="vm.toggleDocType()"></umb-toggle>
+                    </div>
+                </div>
+                <umb-tabs-nav ng-if="vm.tabs"
+                              tabs="vm.tabs"
+                              on-tab-change="vm.clickTab(vm, tab)"
+                              ng-show="vm.docType.enabled">
+                </umb-tabs-nav>
+            </div>
+
+            <div class="umb-dashboard__content">
+
+                <umb-tab-content ng-repeat="tab in vm.tabs" ng-if="tab.active" tab="tab" class="row-fluid" ng-show="tab.active && vm.docType.enabled">
+
+                    <umb-box ng-repeat="property in tab.properties">
+                        <umb-box-header title='{{property.label}}' description="{{property.description}}">
+                            <umb-toggle checked="property.isField" style="margin-left: 10px;"></umb-toggle>
+                        </umb-box-header>
+                        <umb-box-content ng-show="property.isField">
+
+                            <div class="umb-property">
+                                <div class="control-group umb-control-group">
+                                    <div class="umb-el-wrap">
+                                        <label class="control-label">Alias:</label>
+                                        <div class="controls">
+                                            <div class="umb-property-editor">
+                                                <input type="text" ng-model="property.alias" class="umb-property-editor umb-textstring" data-orig="{{property.alias}}" ng-keyup="vm.changed()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="umb-property">
+                                <div class="control-group umb-control-group">
+                                    <div class="umb-el-wrap">
+                                        <label class="control-label">Is Argument:</label>
+                                        <div class="controls">
+                                            <div class="umb-property-editor">
+                                                <input type="checkbox" ng-model="property.isArgument" data-orig="{{property.isArgument}}" ng-click="vm.changed()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="umb-property">
+                                <div class="control-group umb-control-group">
+                                    <div class="umb-el-wrap">
+                                        <label class="control-label">Data Type:</label>
+                                        <div class="controls">
+                                            <div class="umb-property-editor">
+                                                <input type="text" ng-model="property.dataType" readonly />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="umb-property">
+                                <div class="control-group umb-control-group">
+                                    <div class="umb-el-wrap">
+                                        <label class="control-label">GraphQL Data Type:</label>
+                                        <div class="controls">
+                                            <div class="umb-property-editor">
+                                                <input type="text" ng-model="property.qlDataType" readonly />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </umb-box-content>
+                    </umb-box>
+
+                </umb-tab-content>
+
+                <umb-tab-content ng-show="!vm.docType.enabled">
+                    This Document Type is not enabled
+                </umb-tab-content>
+
+            </div>
+
+        </div>
+
+        <umb-editor-footer>
+            <umb-editor-footer-content-right>
+                <umb-button type="button"
+                            button-style="success"
+                            label="Save"
+                            disabled="!vm.hasChanges"
+                            action="vm.saveDocType()">
+                </umb-button>
+            </umb-editor-footer-content-right>
+        </umb-editor-footer>
+
+    </form>
+</div>

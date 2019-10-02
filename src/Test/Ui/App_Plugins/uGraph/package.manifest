@@ -1,0 +1,11 @@
+﻿{
+  "sections": [
+    {
+      "alias": "uGraph",
+      "name": "uGraph"
+    }
+  ],
+  "javascript": [
+    "~/App_Plugins/uGraph/uGraph.controller.js"
+  ]
+}

@@ -36,9 +36,8 @@
         vm.hasChanges = true;
     }
 
-    function toggleProperty(srcEl) {
-        var node = vm["docType"]["tabs"][srcEl.$parent.$index]["properties"][srcEl.$index];
-        node["enabled"] = !node["enabled"];
+    function toggleProperty(property) {
+        property.isField = !property.isField;
         vm.hasChanges = true;
     }
 

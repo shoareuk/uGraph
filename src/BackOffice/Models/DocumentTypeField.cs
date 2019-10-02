@@ -7,12 +7,13 @@ namespace Our.Umbraco.uGraph.BackOffice.Models
     {
         public DocumentTypeField() { }
 
-        public DocumentTypeField(int id, string alias, string label, string description, bool isField, bool isArgument, string fieldName, string dataType, string qlDataType)
+        public DocumentTypeField(int id, string alias, string label, string description, bool canToggle, bool isField, bool isArgument, string fieldName, string dataType, string qlDataType)
         {
             Id = id;
             Alias = alias;
             Label = label;
             Description = description;
+            CanToggle = canToggle;
             IsField = isField;
             IsArgument = isArgument;
             FieldName = fieldName;
@@ -35,6 +36,10 @@ namespace Our.Umbraco.uGraph.BackOffice.Models
         [DataMember(Name = "description")]
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
+
+        [DataMember(Name = "canToggle")]
+        [JsonProperty(PropertyName = "canToggle")]
+        public bool CanToggle { get; set; }
 
         [DataMember(Name = "isField")]
         [JsonProperty(PropertyName = "isField")]

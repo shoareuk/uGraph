@@ -1,15 +1,15 @@
-﻿<div class="welcome-dashboard form-horizontal" ng-controller="uGraph.controller as vm">
+﻿<div class="welcome-dashboard form-horizontal uGraph" ng-controller="uGraph.controller as vm">
 
     <form name="docType" val-form-manager>
 
         <div class="umb-dashboard" data-element="dashboard">
 
             <div class="umb-dashboard__header" ng-show="vm.tabs.length > 0">
-                <div style="height: 50px; padding: 0 10px;">
-                    <div style="float: left; font-weight: 600; font-size: 1.4em;">
-                        <span style="color: #c0c0c0; font-weight: 400;">Document Type:&nbsp;</span>{{vm.docType.name}}
+                <div class="title-container">
+                    <div class="title">
+                        <span class="sub-title">Document Type:&nbsp;</span>{{vm.docType.name}}
                     </div>
-                    <div style="float:right">
+                    <div class="action">
                         <umb-toggle checked="vm.docType.enabled" on-click="vm.toggleDocType()"></umb-toggle>
                     </div>
                 </div>
@@ -20,13 +20,13 @@
                 </umb-tabs-nav>
             </div>
 
-            <div class="umb-dashboard__content">
+            <div class="umb-dashboard__content content-area">
 
-                <umb-tab-content ng-repeat="tab in vm.tabs" ng-if="tab.active" tab="tab" class="row-fluid" ng-show="tab.active && vm.docType.enabled">
+                <umb-tab-content ng-repeat="tab in vm.tabs" ng-if="tab.active" tab="tab" class="row-fluid doc-type-content" ng-show="tab.active && vm.docType.enabled">
 
                     <umb-box ng-repeat="property in tab.properties">
-                        <umb-box-header title='{{property.label}}' description="{{property.description}}">
-                            <umb-toggle checked="property.isField" style="margin-left: 10px;"></umb-toggle>
+                        <umb-box-header title='{{property.label}}' description="{{property.description}}" class="doc-type-title">
+                            <umb-toggle ng-show="property.canToggle" checked="property.isField" class="doc-type-toggle" on-click="vm.toggleProperty(property)"></umb-toggle>
                         </umb-box-header>
                         <umb-box-content ng-show="property.isField">
 

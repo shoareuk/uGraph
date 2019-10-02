@@ -7,5 +7,8 @@
   ],
   "javascript": [
     "~/App_Plugins/uGraph/uGraph.controller.js"
+  ],
+  "css": [
+    "~/App_Plugins/uGraph/uGraph.css"
   ]
 }

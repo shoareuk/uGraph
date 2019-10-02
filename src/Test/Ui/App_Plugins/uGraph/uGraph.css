@@ -1,0 +1,23 @@
+﻿.uGraph .title-container {
+    height: 50px;
+    padding: 0 10px;
+}
+
+.uGraph .title-container .title {
+    float: left;
+    font-weight: 600;
+    font-size: 1.4em;
+}
+
+.uGraph .title-container .title .sub-title{
+    color: #c0c0c0; 
+    font-weight: 400;
+}
+
+.uGraph .title-container .action {
+    float:right
+}
+
+.uGraph .content-area .doc-type-content .doc-type-title .doc-type-toggle{
+    margin-left: 10px;
+}

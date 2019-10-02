@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/src/packages
+/src/.vs/uGraph/v16
+/src/Test/Ui/App_Data/Logs
+/src/Test/Ui/App_Data/TEMP/ClientDependency

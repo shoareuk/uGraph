@@ -3,10 +3,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using Umbraco.Core;
 using Umbraco.Core.Models;
-using Umbraco.Core.PropertyEditors;
-using Umbraco.Web;
 using Umbraco.Web.Models.ContentEditing;
 
 namespace Our.Umbraco.uGraph.BackOffice.Models
@@ -37,7 +34,7 @@ namespace Our.Umbraco.uGraph.BackOffice.Models
                 tabGeneral.Properties = new List<DocumentTypeField>
                 {
                     new DocumentTypeField(1, "id", "Id", "Umbraco CMS Node Id", false, true, true, "Id", typeof(int).Name, typeof(IntGraphType).Name),
-                    new DocumentTypeField(1, "url", "Url", "Umbraco CMS Node Url", false, true, true, "Url", typeof(string).Name, typeof(StringGraphType).Name)
+                    new DocumentTypeField(2, "url", "Url", "Umbraco CMS Node Url", false, true, true, "Url", typeof(string).Name, typeof(StringGraphType).Name)
                 };
 
                 Tabs.Add(tabGeneral);

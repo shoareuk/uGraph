@@ -36,7 +36,8 @@
                                         <label class="control-label">Alias:</label>
                                         <div class="controls">
                                             <div class="umb-property-editor">
-                                                <input type="text" ng-model="property.alias" class="umb-property-editor umb-textstring" data-orig="{{property.alias}}" ng-keyup="vm.changed()" />
+                                                <input type="text" ng-model="property.alias" class="umb-property-editor umb-textstring" data-orig="{{property.alias}}" ng-keyup="vm.changed()" ng-show="property.canToggle" />
+                                                <label ng-show="!property.canToggle">{{property.alias}}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -49,7 +50,8 @@
                                         <label class="control-label">Is Argument:</label>
                                         <div class="controls">
                                             <div class="umb-property-editor">
-                                                <input type="checkbox" ng-model="property.isArgument" data-orig="{{property.isArgument}}" ng-click="vm.changed()" />
+                                                <input type="checkbox" ng-model="property.isArgument" data-orig="{{property.isArgument}}" ng-click="vm.changed()" ng-show="property.canToggle" />
+                                                <label ng-show="!property.canToggle">Yes</label>
                                             </div>
                                         </div>
                                     </div>
@@ -62,7 +64,7 @@
                                         <label class="control-label">Data Type:</label>
                                         <div class="controls">
                                             <div class="umb-property-editor">
-                                                <input type="text" ng-model="property.dataType" readonly />
+                                                <label>{{property.dataType}}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -75,26 +77,20 @@
                                         <label class="control-label">GraphQL Data Type:</label>
                                         <div class="controls">
                                             <div class="umb-property-editor">
-                                                <input type="text" ng-model="property.qlDataType" readonly />
+                                                <label>{{property.qlDataType}}</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </umb-box-content>
                     </umb-box>
-
                 </umb-tab-content>
-
                 <umb-tab-content ng-show="!vm.docType.enabled">
                     This Document Type is not enabled
                 </umb-tab-content>
-
             </div>
-
         </div>
-
         <umb-editor-footer>
             <umb-editor-footer-content-right>
                 <umb-button type="button"
@@ -105,6 +101,5 @@
                 </umb-button>
             </umb-editor-footer-content-right>
         </umb-editor-footer>
-
     </form>
 </div>

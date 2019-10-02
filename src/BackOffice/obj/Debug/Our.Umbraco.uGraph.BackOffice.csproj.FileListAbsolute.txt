@@ -287,7 +287,6 @@ D:\_Dev\Git\shoareuk\uGraph\src\BackOffice\bin\Debug\Umbraco.Examine.xml
 D:\_Dev\Git\shoareuk\uGraph\src\BackOffice\bin\Debug\Umbraco.Web.pdb
 D:\_Dev\Git\shoareuk\uGraph\src\BackOffice\bin\Debug\Umbraco.Web.xml
 D:\_Dev\Git\shoareuk\uGraph\src\BackOffice\bin\Debug\Umbraco.Web.UI.xml
-D:\_Dev\Git\shoareuk\uGraph\src\BackOffice\obj\Debug\Our.Umbraco.uGraph.BackOffice.csprojAssemblyReference.cache
 D:\_Dev\Git\shoareuk\uGraph\src\BackOffice\obj\Debug\Our.Umbraco.uGraph.BackOffice.csproj.CoreCompileInputs.cache
 D:\_Dev\Git\shoareuk\uGraph\src\BackOffice\obj\Debug\Our.Umbraco.uGraph.BackOffice.csproj.CopyComplete
 D:\_Dev\Git\shoareuk\uGraph\src\BackOffice\obj\Debug\Our.Umbraco.uGraph.BackOffice.dll

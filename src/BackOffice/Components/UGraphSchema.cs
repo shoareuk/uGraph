@@ -5,19 +5,28 @@ using Umbraco.Core.Persistence.DatabaseAnnotations;
 namespace Our.Umbraco.uGraph.BackOffice.Components
 {
     [TableName("uGraph")]
-    [PrimaryKey("Id", AutoIncrement = true)]
+    [PrimaryKey("DocTypeId", AutoIncrement = false)]
     [ExplicitColumns]
     public class UGraphSchema
     {
-        [Column("Id")]
-        public int Id { get; set; }
-
         [Column("DocTypeId")]
         public int DocTypeId { get; set; }
 
-        [Column("Properties")]
+        [Column("Alias")]
+        public string Alias { get; set; }
+
+        [Column("Obselete")]
+        public string Name { get; set; }
+
+        [Column("Obselete")]
+        public bool Enabled { get; set; }
+
+        [Column("Obselete")]
+        public bool Obselete { get; set; }
+
+        [Column("Tabs")]
         [SpecialDbType(SpecialDbTypes.NTEXT)]
-        public string Properties { get; set; }
+        public string Tabs { get; set; }
 
         [Column("LastUpdate")]
         public DateTime LastUpdate { get; set; }

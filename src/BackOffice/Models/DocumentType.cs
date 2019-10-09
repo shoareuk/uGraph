@@ -90,15 +90,15 @@ namespace Our.Umbraco.uGraph.BackOffice.Models
 
         [DataMember(Name = "id")]
         [JsonProperty(PropertyName = "id")]
-        public int Id { get; }
+        public int Id { get; set; }
 
         [DataMember(Name = "alias")]
         [JsonProperty(PropertyName = "alias")]
-        public string Alias { get; }
+        public string Alias { get; set; }
 
         [DataMember(Name = "name")]
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; }
+        public string Name { get; set; }
 
         [DataMember(Name = "enabled")]
         [JsonProperty(PropertyName = "enabled")]

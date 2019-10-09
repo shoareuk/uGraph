@@ -1,4 +1,6 @@
 ﻿using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Our.Umbraco.uGraph.BackOffice.Models;
 using Umbraco.Core.Models;
@@ -29,6 +31,41 @@ namespace Our.Umbraco.uGraph.BackOffice.Controllers
             documentType.Tabs.ForEach(x => x.Expanded = false); 
 
             return documentType;
+        }
+
+        [HttpPost]
+        public async Task<HttpResponseMessage> SaveDocType(int id)
+        {
+            DocumentType docType;
+
+            try
+            {
+                var json = await Request.Content.ReadAsStringAsync();
+
+                docType = Newtonsoft.Json.JsonConvert.DeserializeObject<DocumentType>(json);
+            }
+            catch   { docType = null; }
+
+            HttpResponseMessage response;
+
+            if(docType == null)
+            {
+                response = new HttpResponseMessage(HttpStatusCode.BadRequest)
+                {
+                    Content = new StringContent("0")
+                };
+
+                return response;
+            }
+
+            var stop = "STOP";
+
+            response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent("1")
+            };
+
+            return response;
         }
     }
 }

@@ -50,7 +50,13 @@
     }
 
     function saveDocType() {
-        alert('Save DocType');
+        $http({
+            method: 'POST',
+            url: '/umbraco/api/uGraphApi/saveDocType?id=' + vm.docTypeId,
+            data: JSON.stringify(vm.docType)
+        }).then(function (response) {
+            alert('Saved DocType');
+        });
     }
 
     function setChanged() {

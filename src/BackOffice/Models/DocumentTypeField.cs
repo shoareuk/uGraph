@@ -7,7 +7,7 @@ namespace Our.Umbraco.uGraph.BackOffice.Models
     {
         public DocumentTypeField() { }
 
-        public DocumentTypeField(int id, string alias, string label, string description, bool canToggle, bool isField, bool isArgument, string fieldName, string dataType, string qlDataType)
+        public DocumentTypeField(int id, string alias, string label, string description, bool canToggle, bool isField, bool isArgument, string fieldName, string dataType, string qlDataType, bool nullable)
         {
             Id = id;
             Alias = alias;
@@ -19,6 +19,7 @@ namespace Our.Umbraco.uGraph.BackOffice.Models
             FieldName = fieldName;
             DataType = dataType;
             QLDataType = qlDataType;
+            Nullable = nullable;
         }
 
         [DataMember(Name = "id")]
@@ -60,5 +61,9 @@ namespace Our.Umbraco.uGraph.BackOffice.Models
         [DataMember(Name = "qlDataType")]
         [JsonProperty(PropertyName = "qlDataType")]
         public string QLDataType { get; set; }
+
+        [DataMember(Name = "Nullable")]
+        [JsonProperty(PropertyName = "nullable")]
+        public bool Nullable { get; set; }
     }
 }

@@ -251,13 +251,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Migrations\01.CreateTable.cs" />
     <Compile Include="Components\UGraphComponent.cs" />
-    <Compile Include="Components\UGraphComposer.cs" />
+    <Compile Include="Components\UGraphMapDefinitions.cs" />
+    <Compile Include="Components\UGraphMigrationPlan.cs" />
+    <Compile Include="Components\UGraphUserComposer.cs" />
+    <Compile Include="Components\UGraphComponentComposer.cs" />
     <Compile Include="Components\UGraphSchema.cs" />
-    <Compile Include="Components\UGraphTable.cs" />
     <Compile Include="Controllers\uGraphApiController.cs" />
     <Compile Include="Controllers\uGraphTreeController.cs" />
+    <Compile Include="DataAccess\UGraphDataAccess.cs" />
     <Compile Include="Helpers\DataTypeHelpers.cs" />
+    <Compile Include="Interfaces\IUGraphDataAccess.cs" />
     <Compile Include="Models\DocumentTypeField.cs" />
     <Compile Include="Models\JsonData.cs" />
     <Compile Include="Models\DocumentType.cs" />

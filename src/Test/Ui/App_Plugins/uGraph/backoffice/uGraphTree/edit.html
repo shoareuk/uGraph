@@ -28,6 +28,9 @@
                         <umb-box-header title='{{property.label}}' description="{{property.description}}" class="doc-type-title">
                             <umb-toggle ng-show="property.canToggle" checked="property.isField" class="doc-type-toggle" on-click="vm.toggleProperty(property)"></umb-toggle>
                         </umb-box-header>
+                        <umb-box-content class="row-fluid doc-type-content" ng-show="!property.isField">
+                            This property is not enabled for GraphQL
+                        </umb-box-content>
                         <umb-box-content ng-show="property.isField">
 
                             <div class="umb-property">
@@ -83,9 +86,25 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="umb-property">
+                                <div class="control-group umb-control-group">
+                                    <div class="umb-el-wrap">
+                                        <label class="control-label">Nullable:</label>
+                                        <div class="controls">
+                                            <div class="umb-property-editor">
+                                                <label ng-show="property.nullable">Yes</label>
+                                                <label ng-show="!property.nullable">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </umb-box-content>
                     </umb-box>
                 </umb-tab-content>
+
                 <umb-tab-content ng-show="!vm.docType.enabled">
                     This Document Type is not enabled for GraphQL just yet
                 </umb-tab-content>

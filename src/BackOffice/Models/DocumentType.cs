@@ -10,6 +10,8 @@ namespace Our.Umbraco.uGraph.BackOffice.Models
 {
     public class DocumentType
     {
+        public DocumentType() { }
+
         public DocumentType(IContentType docType, IEnumerable<IDataType> dataTypes)
         {
             if (docType == null)
@@ -33,8 +35,8 @@ namespace Our.Umbraco.uGraph.BackOffice.Models
 
                 tabGeneral.Properties = new List<DocumentTypeField>
                 {
-                    new DocumentTypeField(1, "id", "Id", "Umbraco CMS Node Id", false, true, true, "Id", typeof(int).Name, typeof(IntGraphType).Name),
-                    new DocumentTypeField(2, "url", "Url", "Umbraco CMS Node Url", false, true, true, "Url", typeof(string).Name, typeof(StringGraphType).Name)
+                    new DocumentTypeField(1, "id", "Id", "Umbraco CMS Node Id", false, true, true, "Id", typeof(int).Name, typeof(IntGraphType).Name, false),
+                    new DocumentTypeField(2, "url", "Url", "Umbraco CMS Node Url", false, true, true, "Url", typeof(string).Name, typeof(StringGraphType).Name, false)
                 };
 
                 Tabs.Add(tabGeneral);
@@ -70,7 +72,8 @@ namespace Our.Umbraco.uGraph.BackOffice.Models
                                 IsArgument = false,
                                 FieldName = propertyType.Alias,
                                 DataType = Helpers.DataTypeHelpers.DetermineSystemDataType(propertyType.DataTypeId, dataTypes),
-                                QLDataType = Helpers.DataTypeHelpers.DetermineGraphQLDataType(propertyType.DataTypeId, dataTypes)
+                                QLDataType = Helpers.DataTypeHelpers.DetermineGraphQLDataType(propertyType.DataTypeId, dataTypes),
+                                Nullable = !propertyType.Mandatory
                             };
 
                             properties.Add(field);

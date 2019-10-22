@@ -2,5 +2,5 @@
 
 namespace Our.Umbraco.uGraph.BackOffice.Components
 {
-    public class UGraphComposer: ComponentComposer<UGraphComponent> { }
+    public class UGraphComponentComposer: ComponentComposer<UGraphComponent> {}
 }

@@ -1,7 +1,9 @@
-﻿using System.Net;
+﻿using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Our.Umbraco.uGraph.BackOffice.Interfaces;
 using Our.Umbraco.uGraph.BackOffice.Models;
 using Umbraco.Core.Models;
 using Umbraco.Web.WebApi;
@@ -10,11 +12,20 @@ namespace Our.Umbraco.uGraph.BackOffice.Controllers
 {
     public class uGraphApiController: UmbracoApiController
     {
+        private readonly IUGraphDataAccess _dataAccess;
+
+        public uGraphApiController(IUGraphDataAccess dataAccess)
+        {
+            _dataAccess = dataAccess;
+        }
+
         [HttpGet]
         public DocumentType GetDocType(int id)
         {
             if (id <= 0)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
+
+            var dbDocType = _dataAccess.GetDocType(id);
 
             IContentType docType;
 
@@ -28,7 +39,32 @@ namespace Our.Umbraco.uGraph.BackOffice.Controllers
 
             var documentType = new DocumentType(docType, dataTypes);
 
-            documentType.Tabs.ForEach(x => x.Expanded = false); 
+            documentType.Tabs.ForEach(x => x.Expanded = false);
+
+            if (dbDocType == null)
+                return documentType;
+
+            documentType.Enabled = dbDocType.Enabled;
+
+            foreach (var tab in documentType.Tabs)
+            {
+                var dbTab = dbDocType.Tabs.FirstOrDefault(x => x.Id == tab.Id);
+
+                if (dbTab == null)
+                    continue;
+
+                foreach (var property in tab.Properties)
+                {
+                    var dbProperty = dbTab.Properties.FirstOrDefault(x => x.Id == property.Id);
+
+                    if (dbProperty == null)
+                        continue;
+
+                    property.IsField = dbProperty.IsField;
+                    property.IsArgument = dbProperty.IsArgument;
+                    property.Alias = dbProperty.Alias;
+                }
+            }
 
             return documentType;
         }
@@ -52,20 +88,28 @@ namespace Our.Umbraco.uGraph.BackOffice.Controllers
             {
                 response = new HttpResponseMessage(HttpStatusCode.BadRequest)
                 {
-                    Content = new StringContent("0")
+                    Content = new StringContent(bool.FalseString)
                 };
 
                 return response;
             }
 
-            var stop = "STOP";
+            var saved = _dataAccess.AddUpdateDocType(docType);
 
-            response = new HttpResponseMessage(HttpStatusCode.OK)
+            if (saved)
+                SaveGraphQLClassFile(docType);
+
+            response = new HttpResponseMessage(saved ? HttpStatusCode.OK : HttpStatusCode.InternalServerError)
             {
-                Content = new StringContent("1")
+                Content = new StringContent(saved.ToString())
             };
 
             return response;
+        }
+
+        private void SaveGraphQLClassFile(Models.DocumentType docType)
+        {
+
         }
     }
 }

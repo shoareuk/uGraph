@@ -15,10 +15,10 @@ namespace Our.Umbraco.uGraph.BackOffice.Components
         [Column("Alias")]
         public string Alias { get; set; }
 
-        [Column("Obselete")]
+        [Column("Name")]
         public string Name { get; set; }
 
-        [Column("Obselete")]
+        [Column("Enabled")]
         public bool Enabled { get; set; }
 
         [Column("Obselete")]

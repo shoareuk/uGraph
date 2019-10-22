@@ -24,12 +24,7 @@ namespace Our.Umbraco.uGraph.BackOffice.Components
 
         public void Initialize()
         {
-            var migrationPlan = new MigrationPlan("uGraph");
-
-            migrationPlan.From(string.Empty)
-                         .To<UGraphTable>("uGraph-db");
-
-            var upgrader = new Upgrader(migrationPlan);
+            var upgrader = new Upgrader(new UGraphMigrationPlan());
 
             upgrader.Execute(_scopeProvider, _migrationBuilder, _keyValueService, _logger);
         }
